@@ -1,122 +1,133 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>xkjse9 | 個人主頁</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html, body { height:100%; font-family:"Noto Sans TC", sans-serif; scroll-behavior:smooth; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>xkjse9 | 個人主頁</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; font-family:"Noto Sans TC", sans-serif; scroll-behavior:smooth; }
 
-    /* ===== 背景黑色 + 白色粒子 ===== */
-    body {
-      background: #000;
-      overflow-x: hidden;
-      color: #fff;
-    }
+body {
+  background: radial-gradient(circle at 20% 20%, #111 0%, #000 100%),
+              radial-gradient(circle at 80% 80%, #222 0%, #000 100%);
+  overflow-x: hidden;
+  color: #fff;
+  position: relative;
+}
 
-    .particles {
-      position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:0;
-    }
-    .particle {
-      position:absolute; width:2px; height:2px; background:#fff; border-radius:50%; opacity:0.7;
-      animation: floatParticle linear infinite;
-    }
-    @keyframes floatParticle {
-      0% { transform:translateY(0) translateX(0); opacity:0; }
-      10% { opacity:0.7; }
-      100% { transform:translateY(-800px) translateX(50px); opacity:0; }
-    }
+/* 粒子背景 */
+.particles {
+  position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:0;
+}
+.particle {
+  position:absolute; width:2px; height:2px; background:#fff; border-radius:50%; opacity:0.7;
+  animation: floatParticle linear infinite;
+}
+@keyframes floatParticle {
+  0% { transform:translateY(0) translateX(0); opacity:0; }
+  10% { opacity:0.7; }
+  100% { transform:translateY(-800px) translateX(50px); opacity:0; }
+}
 
-    section { height:100vh; display:flex; justify-content:center; align-items:center; position:relative; z-index:1; }
+section { height:100vh; display:flex; justify-content:center; align-items:center; position:relative; z-index:1; }
 
-    /* ===== 第一屏：個人介紹 ===== */
-    #intro .card {
-      background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(20px);
-      border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 40px rgba(0,0,0,0.4);
-      max-width:90%;
-    }
+/* 卡片樣式 */
+.card {
+  background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(20px);
+  border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 40px rgba(0,0,0,0.4);
+  max-width:90%; opacity:0; transform:translateY(40px); transition: 1s ease;
+}
+.card.visible { opacity:1; transform:translateY(0); }
 
-    #intro img { width:140px; height:140px; border-radius:50%; border:4px solid #00d8ff; margin-bottom:20px; box-shadow:0 0 15px #00d8ff88; }
+#intro img { width:140px; height:140px; border-radius:50%; border:4px solid #00d8ff; margin-bottom:20px; box-shadow:0 0 15px #00d8ff88; }
+#intro h1 { font-size:2em; color:#00d8ff; margin-bottom:10px; }
+#intro h2 { font-size:1.1em; font-weight:400; color:#ccc; margin-bottom:15px; }
+#intro p { font-size:1em; color:#aaa; max-width:500px; margin:0 auto; line-height:1.6; }
 
-    #intro h1 { font-size:2em; color:#00d8ff; margin-bottom:10px; }
-    #intro h2 { font-size:1.1em; font-weight:400; color:#ccc; margin-bottom:15px; }
-    #intro p { font-size:1em; color:#aaa; max-width:500px; margin:0 auto; line-height:1.6; }
+/* 箭頭 */
+.scroll-down {
+  position:absolute; bottom:20px; left:50%;
+  transform:translateX(-50%);
+  font-size:2em; color:#00d8ff;
+  cursor:pointer;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%,20%,50%,80%,100%{ transform:translateX(-50%) translateY(0); }
+  40%{ transform:translateX(-50%) translateY(-10px); }
+  60%{ transform:translateX(-50%) translateY(-5px); }
+}
 
-    /* ===== 箭頭提示 ===== */
-    .scroll-down {
-      position:absolute;
-      bottom:20px;
-      left:50%;
-      transform:translateX(-50%);
-      font-size:2em;
-      color:#00d8ff;
-      animation: bounce 2s infinite;
-    }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-      40% { transform: translateX(-50%) translateY(-10px); }
-      60% { transform: translateX(-50%) translateY(-5px); }
-    }
+/* 第二屏聯絡 */
+#contact {
+  display:flex; justify-content:center; align-items:center;
+}
+#contact h2 { margin-bottom:20px; color:#00d8ff; }
+#contact a {
+  display:block; margin:10px 0; font-size:1.2em; color:#00d8ff; text-decoration:none; transition:0.3s;
+}
+#contact a:hover { text-decoration:underline; color:#fff; }
 
-    /* ===== 第二屏：聯絡方式 ===== */
-    #contact {
-      background: rgba(0,0,0,0.3); display:flex; justify-content:center; align-items:center;
-    }
-    #contact .card {
-      background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(20px);
-      border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 40px rgba(0,0,0,0.4); max-width:90%;
-    }
-    #contact h2 { margin-bottom:20px; color:#00d8ff; }
-    #contact a {
-      display:block; margin:10px 0; font-size:1.2em; color:#00d8ff; text-decoration:none; transition:0.3s;
-    }
-    #contact a:hover { text-decoration:underline; color:#fff; }
-  </style>
+</style>
 </head>
 <body>
 
-  <!-- 粒子背景 -->
-  <div class="particles" id="particles"></div>
+<div class="particles" id="particles"></div>
 
-  <!-- 第一屏：個人介紹 -->
-  <section id="intro">
-    <div class="card">
-      <img src="https://i.postimg.cc/9fjDwfGV/3gmhjheymgb.png" alt="頭貼">
-      <h1>Hank</h1>
-      <h2>自學開發者 / 創作者</h2>
-      <p>你好，我是 xkjse9 👋 喜歡嘗試新技術、寫程式，也在學習如何讓網站更有靈魂。</p>
-    </div>
-    <div class="scroll-down">&#x2193;</div> <!-- 下箭頭 -->
-  </section>
+<!-- 第一屏 -->
+<section id="intro">
+  <div class="card visible">
+    <img src="https://i.postimg.cc/9fjDwfGV/3gmhjheymgb.png" alt="頭貼">
+    <h1>xkjse9</h1>
+    <h2>自學開發者 / 創作者</h2>
+    <p>你好，我是 xkjse9 👋 喜歡嘗試新技術、寫程式，也在學習如何讓網站更有靈魂。</p>
+  </div>
+  <div class="scroll-down" id="scrollArrow">&#x2193;</div>
+</section>
 
-  <!-- 第二屏：聯絡方式 -->
-  <section id="contact">
-    <div class="card">
-      <h2>聯絡我</h2>
-      <a href="mailto:hank@example.com">Email: hank@example.com</a>
-      <a href="https://discord.gg/Mzgsh86E" target="_blank">Discord</a>
-      <a href="https://www.instagram.com/xkjse9/" target="_blank">Instagram</a>
-      <a href="https://www.facebook.com/hank2ma" target="_blank">Facebook</a>
-    </div>
-  </section>
+<!-- 第二屏 -->
+<section id="contact">
+  <div class="card" id="contactCard">
+    <h2>聯絡我</h2>
+    <a href="mailto:hank@example.com">Email: hank@example.com</a>
+    <a href="https://discord.gg/Mzgsh86E" target="_blank">Discord</a>
+    <a href="https://www.instagram.com/xkjse9/" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/hank2ma" target="_blank">Facebook</a>
+  </div>
+</section>
 
-  <script>
-    // 生成隨機白色粒子
-    const particlesContainer = document.getElementById('particles');
-    const totalParticles = 50;
-    for(let i=0;i<totalParticles;i++){
-      const p=document.createElement('div');
-      p.className='particle';
-      p.style.left=Math.random()*100+'vw';
-      p.style.top=Math.random()*100+'vh';
-      p.style.animationDuration=5+Math.random()*5+'s';
-      p.style.width=1+Math.random()*3+'px';
-      p.style.height=p.style.width;
-      p.style.opacity=Math.random();
-      particlesContainer.appendChild(p);
-    }
-  </script>
+<script>
+// 粒子生成
+const particlesContainer = document.getElementById('particles');
+const totalParticles = 50;
+for(let i=0;i<totalParticles;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*100+'vw';
+  p.style.top=Math.random()*100+'vh';
+  p.style.animationDuration=5+Math.random()*5+'s';
+  p.style.width=1+Math.random()*3+'px';
+  p.style.height=p.style.width;
+  p.style.opacity=Math.random();
+  particlesContainer.appendChild(p);
+}
+
+// 箭頭點擊滑動 + 第二屏淡入
+document.getElementById('scrollArrow').addEventListener('click', () => {
+  document.getElementById('contact').scrollIntoView({ behavior:'smooth' });
+  document.getElementById('contactCard').classList.add('visible');
+});
+
+// 第二屏淡入動畫觸發（滑動到可視區域）
+window.addEventListener('scroll', () => {
+  const contact = document.getElementById('contact');
+  const rect = contact.getBoundingClientRect();
+  if(rect.top < window.innerHeight * 0.8){
+    document.getElementById('contactCard').classList.add('visible');
+  }
+});
+</script>
 
 </body>
 </html>
