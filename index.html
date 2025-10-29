@@ -3,70 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>bruh0422</title>
+  <title>Hank 的個人網站</title>
   <style>
     body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: radial-gradient(circle at center, #0a0a0a, #000);
-      color: white;
-      font-family: "Poppins", "Noto Sans TC", sans-serif;
+      font-family: "Noto Sans TC", sans-serif;
+      background: linear-gradient(135deg, #101820, #1f1f2e);
+      color: #fff;
       text-align: center;
+      padding: 100px 20px;
     }
 
     h1 {
       font-size: 3em;
-      background: linear-gradient(90deg, #00c6ff, #0072ff);
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 20px;
-      animation: glow 3s infinite alternate;
+      margin-bottom: 0.2em;
+      color: #00d8ff;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #00c6ff; }
-      to { text-shadow: 0 0 25px #0072ff; }
+    h2 {
+      font-weight: 400;
+      color: #aaa;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: 20px auto;
+      line-height: 1.6;
     }
 
     a {
-      display: inline-block;
-      margin: 8px;
-      padding: 10px 25px;
-      border: 1px solid #00bcd4;
-      border-radius: 25px;
-      color: #00bcd4;
+      color: #00d8ff;
       text-decoration: none;
+      border-bottom: 1px solid #00d8ff;
       transition: 0.3s;
     }
 
     a:hover {
-      background: #00bcd4;
-      color: black;
-      transform: scale(1.1);
+      color: #fff;
+      border-color: #fff;
     }
 
-    footer {
-      position: absolute;
-      bottom: 10px;
-      font-size: 0.8em;
-      opacity: 0.5;
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      display: inline-block;
+    }
+
+    .social {
+      margin-top: 30px;
+    }
+
+    .social a {
+      margin: 0 10px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>bruh0422</h1>
-  <p>Welcome to my website!</p>
+  <div class="card">
+    <h1>Hank</h1>
+    <h2>個人網站 / 自學開發者</h2>
+    <p>嗨 👋 我是 Hank，一個熱愛科技與創作的人。<br>
+      這個網站是我學習架設網站的起點。</p>
 
-  <div>
-    <a href="https://discord.gg/" target="_blank">Discord</a>
-    <a href="https://github.com/" target="_blank">GitHub</a>
-    <a href="https://youtube.com/" target="_blank">YouTube</a>
+    <div class="social">
+      <a href="https://discord.com" target="_blank">Discord</a>
+      <a href="https://github.com" target="_blank">GitHub</a>
+      <a href="mailto:hank@example.com">Email</a>
+    </div>
   </div>
-
-  <footer>© 2025 bruh0422</footer>
-</body>
-</html>
+</bod
