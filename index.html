@@ -20,21 +20,20 @@ body {
   position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:0;
 }
 
-/* 流星樣式 */
+/* 流星樣式（垂直下落） */
 .meteor {
   position:absolute;
   width:2px;
-  height:80px;
+  height:60px;
   background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
   border-radius:50%;
   opacity:0.8;
-  transform: rotate(45deg);
-  animation: meteorMove linear infinite;
+  animation: meteorFall linear infinite;
 }
 
-@keyframes meteorMove {
-  0% { transform: translateX(0) translateY(0) rotate(45deg); opacity:1; }
-  100% { transform: translateX(150vw) translateY(150vh) rotate(45deg); opacity:0; }
+@keyframes meteorFall {
+  0% { transform: translateY(-100vh); opacity:1; }
+  100% { transform: translateY(100vh); opacity:0; }
 }
 
 section { height:100vh; display:flex; justify-content:center; align-items:center; position:relative; z-index:1; }
@@ -105,15 +104,14 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 </section>
 
 <script>
-// 生成流星
+// 生成垂直流星
 const particlesContainer = document.getElementById('particles');
-const totalMeteors = 15;
+const totalMeteors = 20;
 
 for(let i=0;i<totalMeteors;i++){
   const m = document.createElement('div');
   m.className='meteor';
   m.style.left = Math.random()*100 + 'vw';
-  m.style.top = Math.random()*-100 + 'vh';
   m.style.animationDuration = (2 + Math.random()*3) + 's';
   m.style.animationDelay = (Math.random()*5) + 's';
   m.style.width = (1 + Math.random()*2)+'px';
