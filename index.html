@@ -9,19 +9,11 @@
 html, body { height:100%; font-family:"Noto Sans TC", sans-serif; scroll-behavior:smooth; }
 
 body {
-  background: radial-gradient(circle at 30% 30%, #00d4ff33, #00111a),
-              radial-gradient(circle at 70% 70%, #ff00aa33, #000);
-  background-size: 200% 200%;
-  animation: moveBg 12s ease-in-out infinite alternate;
+  /* 黑色漸層背景，帶點藍紫色調 */
+  background: linear-gradient(135deg, #000000, #0d0d1a, #1a0033);
   overflow-x: hidden;
   color: #fff;
   position: relative;
-}
-
-/* 背景動畫 */
-@keyframes moveBg {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
 }
 
 /* 粒子容器 */
@@ -42,7 +34,6 @@ body {
 
 section { height:100vh; display:flex; justify-content:center; align-items:center; position:relative; z-index:1; }
 
-/* 卡片 */
 .card {
   background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(20px);
   border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 40px rgba(0,0,0,0.4);
@@ -55,7 +46,6 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 #intro h2 { font-size:1.1em; font-weight:400; color:#ccc; margin-bottom:15px; }
 #intro p { font-size:1em; color:#aaa; max-width:500px; margin:0 auto; line-height:1.6; }
 
-/* 箭頭 */
 .scroll-down {
   position:absolute; bottom:20px; left:50%;
   transform:translateX(-50%);
@@ -69,7 +59,6 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
   60%{ transform:translateX(-50%) translateY(-5px); }
 }
 
-/* 第二屏聯絡 */
 #contact { display:flex; justify-content:center; align-items:center; }
 #contact h2 { margin-bottom:20px; color:#00d8ff; }
 #contact a { display:block; margin:10px 0; font-size:1.2em; color:#00d8ff; text-decoration:none; transition:0.3s; }
@@ -81,7 +70,6 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 
 <div class="particles" id="particles"></div>
 
-<!-- 第一屏 -->
 <section id="intro">
   <div class="card visible">
     <img src="https://i.postimg.cc/9fjDwfGV/3gmhjheymgb.png" alt="頭貼">
@@ -92,7 +80,6 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
   <div class="scroll-down" id="scrollArrow">&#x2193;</div>
 </section>
 
-<!-- 第二屏 -->
 <section id="contact">
   <div class="card" id="contactCard">
     <h2>聯絡我</h2>
