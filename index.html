@@ -8,6 +8,7 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body { height:100%; font-family:"Noto Sans TC", sans-serif; scroll-behavior:smooth; }
 
+/* 背景豪華星空 */
 body {
   background: radial-gradient(circle at 20% 20%, #0a0a0a, #000 70%);
   overflow-x: hidden;
@@ -20,7 +21,20 @@ body {
   position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:0;
 }
 
-/* 流星樣式（垂直下落） */
+/* 星星閃爍 */
+.star {
+  position:absolute;
+  width:2px; height:2px;
+  background:white; border-radius:50%;
+  opacity:0;
+  animation: twinkle linear infinite;
+}
+@keyframes twinkle {
+  0%,100% { opacity:0; }
+  50% { opacity:0.8; }
+}
+
+/* 流星 */
 .meteor {
   position:absolute;
   width:2px;
@@ -30,7 +44,6 @@ body {
   opacity:0.8;
   animation: meteorFall linear infinite;
 }
-
 @keyframes meteorFall {
   0% { transform: translateY(-100vh); opacity:1; }
   100% { transform: translateY(100vh); opacity:0; }
@@ -104,18 +117,31 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 </section>
 
 <script>
-// 生成垂直流星
+// 星星閃爍
 const particlesContainer = document.getElementById('particles');
-const totalMeteors = 20;
+const totalStars = 100;
+for(let i=0;i<totalStars;i++){
+  const star = document.createElement('div');
+  star.className='star';
+  star.style.left = Math.random()*100+'vw';
+  star.style.top = Math.random()*100+'vh';
+  star.style.width = (1+Math.random()*2)+'px';
+  star.style.height = star.style.width;
+  star.style.animationDuration = (2+Math.random()*3)+'s';
+  star.style.animationDelay = Math.random()*5+'s';
+  particlesContainer.appendChild(star);
+}
 
+// 流星
+const totalMeteors = 5; // 流星不必太多
 for(let i=0;i<totalMeteors;i++){
   const m = document.createElement('div');
   m.className='meteor';
   m.style.left = Math.random()*100 + 'vw';
-  m.style.animationDuration = (2 + Math.random()*3) + 's';
-  m.style.animationDelay = (Math.random()*5) + 's';
+  m.style.animationDuration = (1.5 + Math.random()*1.5) + 's';
+  m.style.animationDelay = Math.random()*5 + 's';
   m.style.width = (1 + Math.random()*2)+'px';
-  m.style.height = (60 + Math.random()*50)+'px';
+  m.style.height = (60 + Math.random()*40)+'px';
   particlesContainer.appendChild(m);
 }
 
