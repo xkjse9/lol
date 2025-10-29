@@ -9,7 +9,6 @@
 html, body { height:100%; font-family:"Noto Sans TC", sans-serif; scroll-behavior:smooth; }
 
 body {
-  /* 黑色漸層背景，帶點藍紫色調 */
   background: linear-gradient(135deg, #000000, #0d0d1a, #1a0033);
   overflow-x: hidden;
   color: #fff;
@@ -35,8 +34,10 @@ body {
 section { height:100vh; display:flex; justify-content:center; align-items:center; position:relative; z-index:1; }
 
 .card {
-  background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(20px);
-  border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 40px rgba(0,0,0,0.4);
+  background: rgba(255,255,255,0.03); /* 透明度降低，分隔感弱化 */
+  border:1px solid rgba(255,255,255,0.05); 
+  backdrop-filter:blur(20px);
+  border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 20px rgba(0,0,0,0.3);
   max-width:90%; opacity:0; transform:translateY(40px); transition: 1s ease;
 }
 .card.visible { opacity:1; transform:translateY(0); }
@@ -61,8 +62,16 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 
 #contact { display:flex; justify-content:center; align-items:center; }
 #contact h2 { margin-bottom:20px; color:#00d8ff; }
-#contact a { display:block; margin:10px 0; font-size:1.2em; color:#00d8ff; text-decoration:none; transition:0.3s; }
-#contact a:hover { text-decoration:underline; color:#fff; }
+
+/* 聯絡連結樣式 */
+.contact-link {
+  display:flex; align-items:center;
+  margin:10px 0; font-size:1.2em; color:#00d8ff; text-decoration:none; transition:0.3s;
+}
+.contact-link img {
+  width:24px; height:24px; margin-right:10px; filter: grayscale(100%); /* 黑白圖 */
+}
+.contact-link:hover { text-decoration:underline; color:#fff; }
 
 </style>
 </head>
@@ -83,9 +92,15 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 <section id="contact">
   <div class="card" id="contactCard">
     <h2>聯絡我</h2>
-    <a href="https://discord.gg/Mzgsh86E" target="_blank">Discord</a>
-    <a href="https://www.instagram.com/xkjse9/" target="_blank">Instagram</a>
-    <a href="https://www.facebook.com/hank2ma" target="_blank">Facebook</a>
+    <a class="contact-link" href="https://discord.gg/Mzgsh86E" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">Discord
+    </a>
+    <a class="contact-link" href="https://www.instagram.com/xkjse9/" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">Instagram
+    </a>
+    <a class="contact-link" href="https://www.facebook.com/hank2ma" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">Facebook
+    </a>
   </div>
 </section>
 
