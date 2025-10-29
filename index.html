@@ -8,7 +8,6 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body { height:100%; font-family:"Noto Sans TC", sans-serif; scroll-behavior:smooth; }
 
-/* 豪華星空背景 */
 body {
   background: radial-gradient(circle at 20% 20%, #0a0a0a, #000 70%);
   overflow-x: hidden;
@@ -16,19 +15,26 @@ body {
   position: relative;
 }
 
-/* 粒子背景 */
+/* 粒子容器 */
 .particles {
   position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:0;
 }
-.particle {
-  position:absolute; width:2px; height:2px; background:#fff; border-radius:50%; opacity:0.7;
-  animation: floatParticle linear infinite;
+
+/* 流星樣式 */
+.meteor {
+  position:absolute;
+  width:2px;
+  height:80px;
+  background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+  border-radius:50%;
+  opacity:0.8;
+  transform: rotate(45deg);
+  animation: meteorMove linear infinite;
 }
-@keyframes floatParticle {
-  0% { transform:translateY(0) translateX(0); opacity:0; }
-  10% { opacity:0.7; }
-  50% { opacity:1; }
-  100% { transform:translateY(-800px) translateX(50px); opacity:0; }
+
+@keyframes meteorMove {
+  0% { transform: translateX(0) translateY(0) rotate(45deg); opacity:1; }
+  100% { transform: translateX(150vw) translateY(150vh) rotate(45deg); opacity:0; }
 }
 
 section { height:100vh; display:flex; justify-content:center; align-items:center; position:relative; z-index:1; }
@@ -99,19 +105,20 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 </section>
 
 <script>
-// 生成白色粒子
+// 生成流星
 const particlesContainer = document.getElementById('particles');
-const totalParticles = 80;
-for(let i=0;i<totalParticles;i++){
-  const p=document.createElement('div');
-  p.className='particle';
-  p.style.left=Math.random()*100+'vw';
-  p.style.top=Math.random()*100+'vh';
-  p.style.animationDuration=5+Math.random()*5+'s';
-  p.style.width=1+Math.random()*3+'px';
-  p.style.height=p.style.width;
-  p.style.opacity=Math.random();
-  particlesContainer.appendChild(p);
+const totalMeteors = 15;
+
+for(let i=0;i<totalMeteors;i++){
+  const m = document.createElement('div');
+  m.className='meteor';
+  m.style.left = Math.random()*100 + 'vw';
+  m.style.top = Math.random()*-100 + 'vh';
+  m.style.animationDuration = (2 + Math.random()*3) + 's';
+  m.style.animationDelay = (Math.random()*5) + 's';
+  m.style.width = (1 + Math.random()*2)+'px';
+  m.style.height = (60 + Math.random()*50)+'px';
+  particlesContainer.appendChild(m);
 }
 
 // 箭頭點擊滑動 + 第二屏淡入
