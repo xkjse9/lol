@@ -33,22 +33,22 @@ body {
 section { height:100vh; display:flex; justify-content:center; align-items:center; position:relative; z-index:1; }
 
 .card {
-  background: rgba(255,255,255,0.01);
-  border:none;
-  backdrop-filter:blur(15px);
+  background: rgba(250, 245, 230, 0.9); /* 淺米色半透明 */
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
   border-radius:20px; text-align:center; padding:40px;
   max-width:90%; opacity:0; transform:translateY(40px);
   transition: 1s ease, box-shadow 0.5s ease;
 }
 .card.visible { 
   opacity:1; transform:translateY(0); 
-  box-shadow:0 0 20px rgba(0,200,255,0.4);
+  box-shadow:0 0 20px rgba(0,200,255,0.2);
 }
 
 #intro img { width:140px; height:140px; border-radius:50%; border:4px solid #00d8ff; margin-bottom:20px; box-shadow:0 0 15px #00d8ff88; }
 #intro h1 { font-size:2em; color:#00d8ff; margin-bottom:10px; }
-#intro h2 { font-size:1.1em; font-weight:400; color:#ccc; margin-bottom:15px; }
-#intro p { font-size:1em; color:#aaa; max-width:500px; margin:0 auto; line-height:1.6; }
+#intro h2 { font-size:1.1em; font-weight:400; color:#555; margin-bottom:15px; }
+#intro p { font-size:1em; color:#333; max-width:500px; margin:0 auto; line-height:1.6; }
 
 .scroll-down {
   position:absolute; bottom:20px; left:50%;
@@ -72,12 +72,12 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 
 .contact-link {
   display:flex; align-items:center;
-  margin:10px 0; font-size:1.2em; color:#00d8ff; text-decoration:none; transition:0.3s;
+  margin:10px 0; font-size:1.2em; color:#000; text-decoration:none; transition:0.3s;
 }
 .contact-link img {
-  width:24px; height:24px; margin-right:10px; filter: brightness(100%);
+  width:24px; height:24px; margin-right:10px;
 }
-.contact-link:hover { text-decoration:underline; color:#fff; }
+.contact-link:hover { text-decoration:underline; color:#00d8ff; }
 
 </style>
 </head>
@@ -100,13 +100,13 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
     <h2>聯絡我</h2>
 
     <a class="contact-link" href="https://discord.gg/Mzgsh86E" target="_blank">
-      <img src="https://i.postimg.cc/wjqhQyGv/discord-white.png" alt="Discord">Discord
+      <img src="https://i.postimg.cc/3x3rM0N2/discord-black.png" alt="Discord">Discord
     </a>
     <a class="contact-link" href="https://www.instagram.com/xkjse9/" target="_blank">
-      <img src="https://i.postimg.cc/DyK0v7WB/instagram-white.png" alt="Instagram">Instagram
+      <img src="https://i.postimg.cc/bYHVb9dM/instagram-black.png" alt="Instagram">Instagram
     </a>
     <a class="contact-link" href="https://www.facebook.com/hank2ma" target="_blank">
-      <img src="https://i.postimg.cc/Qdxp5xYs/facebook-white.png" alt="Facebook">Facebook
+      <img src="https://i.postimg.cc/dV9Z2Q6Z/facebook-black.png" alt="Facebook">Facebook
     </a>
 
   </div>
