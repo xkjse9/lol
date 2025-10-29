@@ -33,13 +33,18 @@ body {
 section { height:100vh; display:flex; justify-content:center; align-items:center; position:relative; z-index:1; }
 
 .card {
-  background: linear-gradient(145deg, rgba(250,245,230,0.95), rgba(230,225,210,0.95));
+  background: linear-gradient(145deg, rgba(220,210,200,0.9), rgba(200,190,180,0.9));
   border:1px solid rgba(255,255,255,0.1);
   backdrop-filter:blur(10px);
-  border-radius:20px; text-align:center; padding:40px;
-  max-width:90%; opacity:0; transform:translateY(40px);
+  border-radius:20px;
+  text-align:center;
+  padding:40px;
+  max-width:90%;
+  opacity:0;
+  transform:translateY(40px);
   transition: 1s ease, box-shadow 0.5s ease;
 }
+
 
 .card.visible { 
   opacity:1; transform:translateY(0); 
