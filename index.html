@@ -8,12 +8,20 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body { height:100%; font-family:"Noto Sans TC", sans-serif; scroll-behavior:smooth; }
 
-/* 背景豪華星空 */
 body {
-  background: radial-gradient(circle at 20% 20%, #0a0a0a, #000 70%);
+  background: radial-gradient(circle at 30% 30%, #00d4ff33, #00111a),
+              radial-gradient(circle at 70% 70%, #ff00aa33, #000);
+  background-size: 200% 200%;
+  animation: moveBg 12s ease-in-out infinite alternate;
   overflow-x: hidden;
   color: #fff;
   position: relative;
+}
+
+/* 背景動畫 */
+@keyframes moveBg {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 /* 粒子容器 */
@@ -21,45 +29,28 @@ body {
   position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:0;
 }
 
-/* 星星閃爍 */
-.star {
-  position:absolute;
-  width:2px; height:2px;
-  background:white; border-radius:50%;
-  opacity:0;
-  animation: twinkle linear infinite;
+/* 粒子 */
+.particle {
+  position:absolute; width:2px; height:2px; background:#fff; border-radius:50%; opacity:0.7;
+  animation: floatParticle linear infinite;
 }
-@keyframes twinkle {
-  0%,100% { opacity:0; }
-  50% { opacity:0.8; }
-}
-
-/* 流星 */
-.meteor {
-  position:absolute;
-  width:2px;
-  height:60px;
-  background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
-  border-radius:50%;
-  opacity:0.8;
-  animation: meteorFall linear infinite;
-}
-@keyframes meteorFall {
-  0% { transform: translateY(-100vh); opacity:1; }
-  100% { transform: translateY(100vh); opacity:0; }
+@keyframes floatParticle {
+  0% { transform:translateY(0); opacity:0.5; }
+  50% { opacity:1; }
+  100% { transform:translateY(-800px); opacity:0; }
 }
 
 section { height:100vh; display:flex; justify-content:center; align-items:center; position:relative; z-index:1; }
 
-/* 卡片樣式 */
+/* 卡片 */
 .card {
-  background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(25px);
-  border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 60px rgba(0,0,0,0.5);
+  background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(20px);
+  border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 40px rgba(0,0,0,0.4);
   max-width:90%; opacity:0; transform:translateY(40px); transition: 1s ease;
 }
 .card.visible { opacity:1; transform:translateY(0); }
 
-#intro img { width:140px; height:140px; border-radius:50%; border:4px solid #00d8ff; margin-bottom:20px; box-shadow:0 0 20px #00d8ff88; }
+#intro img { width:140px; height:140px; border-radius:50%; border:4px solid #00d8ff; margin-bottom:20px; box-shadow:0 0 15px #00d8ff88; }
 #intro h1 { font-size:2em; color:#00d8ff; margin-bottom:10px; }
 #intro h2 { font-size:1.1em; font-weight:400; color:#ccc; margin-bottom:15px; }
 #intro p { font-size:1em; color:#aaa; max-width:500px; margin:0 auto; line-height:1.6; }
@@ -79,13 +70,9 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 }
 
 /* 第二屏聯絡 */
-#contact {
-  display:flex; justify-content:center; align-items:center;
-}
+#contact { display:flex; justify-content:center; align-items:center; }
 #contact h2 { margin-bottom:20px; color:#00d8ff; }
-#contact a {
-  display:block; margin:10px 0; font-size:1.2em; color:#00d8ff; text-decoration:none; transition:0.3s;
-}
+#contact a { display:block; margin:10px 0; font-size:1.2em; color:#00d8ff; text-decoration:none; transition:0.3s; }
 #contact a:hover { text-decoration:underline; color:#fff; }
 
 </style>
@@ -109,7 +96,6 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 <section id="contact">
   <div class="card" id="contactCard">
     <h2>聯絡我</h2>
-    <a href="mailto:hank@example.com">Email: hank@example.com</a>
     <a href="https://discord.gg/Mzgsh86E" target="_blank">Discord</a>
     <a href="https://www.instagram.com/xkjse9/" target="_blank">Instagram</a>
     <a href="https://www.facebook.com/hank2ma" target="_blank">Facebook</a>
@@ -117,35 +103,22 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 </section>
 
 <script>
-// 星星閃爍
+// 生成漂浮粒子
 const particlesContainer = document.getElementById('particles');
-const totalStars = 100;
-for(let i=0;i<totalStars;i++){
-  const star = document.createElement('div');
-  star.className='star';
-  star.style.left = Math.random()*100+'vw';
-  star.style.top = Math.random()*100+'vh';
-  star.style.width = (1+Math.random()*2)+'px';
-  star.style.height = star.style.width;
-  star.style.animationDuration = (2+Math.random()*3)+'s';
-  star.style.animationDelay = Math.random()*5+'s';
-  particlesContainer.appendChild(star);
+const totalParticles = 80;
+for(let i=0;i<totalParticles;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*100+'vw';
+  p.style.top=Math.random()*100+'vh';
+  p.style.animationDuration=5+Math.random()*5+'s';
+  p.style.width=1+Math.random()*3+'px';
+  p.style.height=p.style.width;
+  p.style.opacity=Math.random();
+  particlesContainer.appendChild(p);
 }
 
-// 流星
-const totalMeteors = 5; // 流星不必太多
-for(let i=0;i<totalMeteors;i++){
-  const m = document.createElement('div');
-  m.className='meteor';
-  m.style.left = Math.random()*100 + 'vw';
-  m.style.animationDuration = (1.5 + Math.random()*1.5) + 's';
-  m.style.animationDelay = Math.random()*5 + 's';
-  m.style.width = (1 + Math.random()*2)+'px';
-  m.style.height = (60 + Math.random()*40)+'px';
-  particlesContainer.appendChild(m);
-}
-
-// 箭頭點擊滑動 + 第二屏淡入
+// 箭頭滑動 + 第二屏淡入
 document.getElementById('scrollArrow').addEventListener('click', () => {
   document.getElementById('contact').scrollIntoView({ behavior:'smooth' });
   document.getElementById('contactCard').classList.add('visible');
