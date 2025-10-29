@@ -33,17 +33,18 @@ body {
 section { height:100vh; display:flex; justify-content:center; align-items:center; position:relative; z-index:1; }
 
 .card {
-  background: linear-gradient(145deg, rgba(220,210,200,0.9), rgba(200,190,180,0.9));
-  border:1px solid rgba(255,255,255,0.1);
-  backdrop-filter:blur(10px);
-  border-radius:20px;
-  text-align:center;
-  padding:40px;
-  max-width:90%;
-  opacity:0;
-  transform:translateY(40px);
+  background: rgba(250, 245, 230, 0.9); /* 淺米色半透明 */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  text-align: center;
+  padding: 40px;
+  max-width: 90%;
+  opacity: 0;
+  transform: translateY(40px);
   transition: 1s ease, box-shadow 0.5s ease;
 }
+
 
 
 .card.visible { 
@@ -61,7 +62,8 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 #intro h1 {
   font-size:2em;
   color:#ff6eff; /* 螢光粉 */
-  text-shadow: 0 0 8px #ff6eff, 0 0 12px #ff6eff;
+  text-shadow: 0 0 4px #ff6eff88, 0 0 8px #ff6eff55; /* 降低光暈強度 */
+  letter-spacing: 1px; /* 增加字距 */
   margin-bottom:10px;
 }
 #intro h2 { font-size:1.1em; font-weight:400; color:#555; margin-bottom:15px; }
@@ -88,7 +90,8 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 #contact h2 {
   margin-bottom:20px;
   color:#ff6eff; /* 螢光粉 */
-  text-shadow: 0 0 8px #ff6eff, 0 0 12px #ff6eff;
+  text-shadow: 0 0 4px #ff6eff88, 0 0 8px #ff6eff55; /* 降低光暈強度 */
+  letter-spacing: 1px;
 }
 
 .contact-link {
