@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hank | 個人主頁</title>
+  <title>xkjse9 | 個人主頁</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    html, body { height:100%; font-family:"Noto Sans TC", sans-serif; scroll-behavior: smooth; }
+    html, body { height:100%; font-family:"Noto Sans TC", sans-serif; scroll-behavior:smooth; }
 
     /* ===== 背景流光 + 粒子 ===== */
     body {
@@ -36,35 +36,49 @@
       100% { transform:translateY(-800px) translateX(50px); opacity:0; }
     }
 
-    /* ===== 共用動畫 ===== */
-    @keyframes fadeIn { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
-    @keyframes floatCard {0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-10px) rotate(1deg);}100%{transform:translateY(0) rotate(0deg);}}
-    @keyframes pulse {0%{box-shadow:0 0 15px #00d8ff88; transform:scale(1);}50%{box-shadow:0 0 30px #00d8ffbb; transform:scale(1.05);}100%{box-shadow:0 0 15px #00d8ff88; transform:scale(1);}}
-    @keyframes floatText {0%{transform:translateY(0);}50%{transform:translateY(-5px);}100%{transform:translateY(0);}}
-
-    /* ===== 區塊樣式 ===== */
     section { height:100vh; display:flex; justify-content:center; align-items:center; position:relative; z-index:1; }
 
-    .card {
+    /* ===== 第一屏：個人介紹 ===== */
+    #intro .card {
       background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(20px);
       border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 40px rgba(0,0,0,0.4);
-      animation:fadeIn 1.2s ease forwards,floatCard 6s ease-in-out infinite alternate; opacity:0;
       max-width:90%;
     }
 
-    img { width:140px; height:140px; border-radius:50%; border:4px solid #00d8ff; margin-bottom:20px; box-shadow:0 0 15px #00d8ff88; animation:pulse 2.5s infinite; }
+    #intro img { width:140px; height:140px; border-radius:50%; border:4px solid #00d8ff; margin-bottom:20px; box-shadow:0 0 15px #00d8ff88; }
 
-    h1 { font-size:2em; color:#00d8ff; animation:floatText 3s ease-in-out infinite alternate; }
-    h2 { font-size:1.1em; font-weight:400; color:#ccc; margin-bottom:15px; }
-    p { font-size:1em; color:#aaa; max-width:500px; margin:0 auto 25px; line-height:1.6; }
+    #intro h1 { font-size:2em; color:#00d8ff; margin-bottom:10px; }
+    #intro h2 { font-size:1.1em; font-weight:400; color:#ccc; margin-bottom:15px; }
+    #intro p { font-size:1em; color:#aaa; max-width:500px; margin:0 auto; line-height:1.6; }
 
-    .social a { display:inline-block; margin:0 10px; text-decoration:none; color:#00d8ff; font-weight:bold; border:1px solid #00d8ff; padding:8px 14px; border-radius:8px; transition:0.3s, transform 0.3s; }
-    .social a:hover { background:#00d8ff; color:#000; box-shadow:0 0 20px #00d8ff; transform:scale(1.15); }
+    /* ===== 箭頭提示 ===== */
+    .scroll-down {
+      position:absolute;
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:2em;
+      color:#00d8ff;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
 
-    /* 聯絡區特別樣式 */
-    #contact { background: rgba(0,0,0,0.3); }
+    /* ===== 第二屏：聯絡方式 ===== */
+    #contact {
+      background: rgba(0,0,0,0.3); display:flex; justify-content:center; align-items:center;
+    }
+    #contact .card {
+      background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(20px);
+      border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 40px rgba(0,0,0,0.4); max-width:90%;
+    }
     #contact h2 { margin-bottom:20px; color:#00d8ff; }
-    #contact a { display:block; margin:10px 0; font-size:1.2em; color:#00d8ff; text-decoration:none; transition:0.3s; }
+    #contact a {
+      display:block; margin:10px 0; font-size:1.2em; color:#00d8ff; text-decoration:none; transition:0.3s;
+    }
     #contact a:hover { text-decoration:underline; color:#fff; }
   </style>
 </head>
@@ -79,20 +93,15 @@
       <img src="https://i.postimg.cc/9fjDwfGV/3gmhjheymgb.png" alt="頭貼">
       <h1>Hank</h1>
       <h2>自學開發者 / 創作者</h2>
-      <p>你好，我是 Hank 👋 喜歡嘗試新技術、寫程式，也在學習如何讓網站更有靈魂。</p>
-      <div class="social">
-        <a href="https://discord.gg/Mzgsh86E" target="_blank">Discord</a>
-        <a href="https://www.instagram.com/xkjse9/" target="_blank">Instagram</a>
-        <a href="https://www.facebook.com/hank2ma">Facebook</a>
-      </div>
+      <p>你好，我是 xkjse9 👋 喜歡嘗試新技術、寫程式，也在學習如何讓網站更有靈魂。</p>
     </div>
+    <div class="scroll-down">&#x2193;</div> <!-- 下箭頭 -->
   </section>
 
   <!-- 第二屏：聯絡方式 -->
   <section id="contact">
     <div class="card">
-      <h2>聯絡我</h2>
-      <a href="mailto:hank@example.com">Email: hank@example.com</a>
+      <h2>聯絡方式</h2>
       <a href="https://discord.gg/Mzgsh86E" target="_blank">Discord</a>
       <a href="https://www.instagram.com/xkjse9/" target="_blank">Instagram</a>
       <a href="https://www.facebook.com/hank2ma" target="_blank">Facebook</a>
