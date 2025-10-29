@@ -3,70 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hank 的個人網站</title>
+  <title>Hank | 個人主頁</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: "Noto Sans TC", sans-serif;
-      background: linear-gradient(135deg, #101820, #1f1f2e);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: #fff;
-      text-align: center;
-      padding: 100px 20px;
+      background: radial-gradient(circle at 30% 30%, #00d4ff55, #00111a),
+                  radial-gradient(circle at 70% 70%, #ff00aa33, #000);
+      background-size: 200% 200%;
+      animation: moveBg 12s ease-in-out infinite alternate;
+      overflow: hidden;
     }
 
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.2em;
-      color: #00d8ff;
-    }
-
-    h2 {
-      font-weight: 400;
-      color: #aaa;
-    }
-
-    p {
-      font-size: 1.2em;
-      max-width: 600px;
-      margin: 20px auto;
-      line-height: 1.6;
-    }
-
-    a {
-      color: #00d8ff;
-      text-decoration: none;
-      border-bottom: 1px solid #00d8ff;
-      transition: 0.3s;
-    }
-
-    a:hover {
-      color: #fff;
-      border-color: #fff;
+    @keyframes moveBg {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
     .card {
       background: rgba(255, 255, 255, 0.05);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-      display: inline-block;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      text-align: center;
+      padding: 40px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 1.2s ease forwards;
+      opacity: 0;
     }
 
-    .social {
-      margin-top: 30px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #00d8ff;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px #00d8ff88;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #00d8ff;
+    }
+
+    h2 {
+      font-size: 1.1em;
+      font-weight: 400;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1em;
+      color: #aaa;
+      max-width: 500px;
+      margin: 0 auto 25px;
+      line-height: 1.6;
     }
 
     .social a {
+      display: inline-block;
       margin: 0 10px;
+      text-decoration: none;
+      color: #00d8ff;
       font-weight: bold;
+      border: 1px solid #00d8ff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .social a:hover {
+      background: #00d8ff;
+      color: #000;
+      box-shadow: 0 0 15px #00d8ff;
     }
   </style>
 </head>
 <body>
   <div class="card">
+    <img src="https://i.imgur.com/2K0yLrJ.png" alt="頭貼">
     <h1>Hank</h1>
-    <h2>個人網站 / 自學開發者</h2>
-    <p>嗨 👋 我是 Hank，一個熱愛科技與創作的人。<br>
-      這個網站是我學習架設網站的起點。</p>
+    <h2>自學開發者 / 創作者</h2>
+    <p>你好，我是 Hank 👋  
+       喜歡嘗試新技術、寫程式，也在學習如何讓網站更有靈魂。</p>
 
     <div class="social">
       <a href="https://discord.com" target="_blank">Discord</a>
@@ -74,4 +109,5 @@
       <a href="mailto:hank@example.com">Email</a>
     </div>
   </div>
-</bod
+</body>
+</html>
