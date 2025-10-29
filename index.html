@@ -8,9 +8,9 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body { height:100%; font-family:"Noto Sans TC", sans-serif; scroll-behavior:smooth; }
 
+/* 豪華星空背景 */
 body {
-  background: radial-gradient(circle at 20% 20%, #111 0%, #000 100%),
-              radial-gradient(circle at 80% 80%, #222 0%, #000 100%);
+  background: radial-gradient(circle at 20% 20%, #0a0a0a, #000 70%);
   overflow-x: hidden;
   color: #fff;
   position: relative;
@@ -27,6 +27,7 @@ body {
 @keyframes floatParticle {
   0% { transform:translateY(0) translateX(0); opacity:0; }
   10% { opacity:0.7; }
+  50% { opacity:1; }
   100% { transform:translateY(-800px) translateX(50px); opacity:0; }
 }
 
@@ -34,13 +35,13 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 
 /* 卡片樣式 */
 .card {
-  background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(20px);
-  border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 40px rgba(0,0,0,0.4);
+  background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(25px);
+  border-radius:20px; text-align:center; padding:40px; box-shadow:0 0 60px rgba(0,0,0,0.5);
   max-width:90%; opacity:0; transform:translateY(40px); transition: 1s ease;
 }
 .card.visible { opacity:1; transform:translateY(0); }
 
-#intro img { width:140px; height:140px; border-radius:50%; border:4px solid #00d8ff; margin-bottom:20px; box-shadow:0 0 15px #00d8ff88; }
+#intro img { width:140px; height:140px; border-radius:50%; border:4px solid #00d8ff; margin-bottom:20px; box-shadow:0 0 20px #00d8ff88; }
 #intro h1 { font-size:2em; color:#00d8ff; margin-bottom:10px; }
 #intro h2 { font-size:1.1em; font-weight:400; color:#ccc; margin-bottom:15px; }
 #intro p { font-size:1em; color:#aaa; max-width:500px; margin:0 auto; line-height:1.6; }
@@ -98,9 +99,9 @@ section { height:100vh; display:flex; justify-content:center; align-items:center
 </section>
 
 <script>
-// 粒子生成
+// 生成白色粒子
 const particlesContainer = document.getElementById('particles');
-const totalParticles = 50;
+const totalParticles = 80;
 for(let i=0;i<totalParticles;i++){
   const p=document.createElement('div');
   p.className='particle';
@@ -119,7 +120,7 @@ document.getElementById('scrollArrow').addEventListener('click', () => {
   document.getElementById('contactCard').classList.add('visible');
 });
 
-// 第二屏淡入動畫觸發（滑動到可視區域）
+// 第二屏淡入動畫觸發
 window.addEventListener('scroll', () => {
   const contact = document.getElementById('contact');
   const rect = contact.getBoundingClientRect();
